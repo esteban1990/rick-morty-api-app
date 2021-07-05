@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import { GetCharacters } from './components/GetCharacters';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { NavBar } from './components/NavBar';
+import { Home } from './components/Home';
+import { GetLocations } from './components/GetLocations';
+import { GetEpisodes } from './components/GetEpisodes';
+import { SearchCategory } from './components/SearchCategory';
 
-function App() {
+
+const App = () => {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+
+        <NavBar />
+
+        <Route exact path="/">
+          <Home />
+        </Route>
+
+        {/* <Route exact path="/categories">
+          <SearchCategory/>
+        </Route> */}
+
+        <Route excat path="/characters">
+          <GetCharacters />
+        </Route>
+
+      <Route exact path="/locations">
+        <GetLocations/>
+      </Route>
+
+      <Route exact path="/episodes">
+        <GetEpisodes/>
+      </Route>
+
+      </Router>
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
